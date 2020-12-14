@@ -1,0 +1,238 @@
+:root{
+    --white-color: #fff;
+    --black-color:#000;
+    --text-color:#333;
+    --primary-color:#EE4D2D;
+    --border-color: #dbdbdb;
+
+    --star-color: #FFCE3E;
+    --navbar-height: 50px;
+    --header-height: 140px;
+    --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+}
+
+*{
+    box-sizing: inherit; /*kế thừa từ thẻ chứa nó, ở đây kế thửa từ html*/
+}
+ 
+html{
+    font-size: 62.5%;  /* 62.5% = 10px */
+    line-height: 1.6rem;  /* "rem" chỉ phụ thuộc vào mỗi thẻ html. Thẻ html đang là 62.5%=10px ==> 1rem = 10px  */
+    font-family: 'Roboto', sans-serif; /* "sans-serif" : tập hợp các phông chữ k có chân, trong lúc mà font Roboto đang được tải về thì sẽ sử dụng font sans-serif*/
+    box-sizing: border-box;
+}
+
+
+/* Responsive */
+.grid{
+    width: 1200px;
+    max-width: 100%; /* chiều ngang tối đa*/
+    /* màn hình mà có kích thước lớn thì tối đa của grid cũng chỉ là 1200px, nhưng nhỏ hơn thì "max-width" sẽ có tác dụng làm giảm kich của grid bằng với màn hình */
+    margin: 0 auto;
+} 
+
+.grid_full-width{
+    width: 100%;
+}
+
+.grid__row{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -6px;
+}
+
+.grid__column_2{
+    padding: 0 6px;
+    width: 16.6667%;
+}
+
+.grid__column_10{
+    padding: 0 6px;
+    width: 83.3334%;
+}
+
+.grid__column_home-product{
+    padding: 0 6px;
+    width: 20%;
+}
+
+/* Animation */
+@keyframes FadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes growth{
+    from{
+        transform: scale(0.7);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+
+/* modal */
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: FadeIn linear 0.1s;
+}
+
+.modal__layout{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    /* z-index: 0; */ /*mặc định bằng 0, nếu modal__body k đặt z-index=1 thì nó sẽ bị ẩn
+                        ai ở trên thì sẽ nằm trên, z-index lớn hơn sẽ ở trên*/
+}
+
+.modal__body{
+    /* position: relative; */
+    background-color: var(--white-color);
+    margin: auto;
+    z-index: 1;
+    animation: growth linear 0.2s;
+}
+
+/* button style */
+.btn{
+    height: 32px;
+    min-width: 130px;
+    font-size: 1.4rem;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white-color);
+}
+
+/* .btn:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+} */
+
+.btn.btn--size-s{
+    height: 28px;
+}
+
+.btn.btn--primary{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+/* Select Options */
+.select{
+    min-width: 200px;
+    height: 34px;
+    padding: 0 16px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.select:hover .select__list{
+    display: block;
+}
+
+.select__lable{
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.select__icon{
+    font-size: 1.4rem;
+    color: rgb(131, 131, 131);
+    position: relative;
+    top: 1px;
+}
+
+.select__list{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 27px;
+    background-color: var(--white-color);
+    list-style: none;
+    padding: 10px 16px;
+    display: none;
+    z-index: 1;
+}
+
+.select__list::before{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -3px;
+    height: 10px;
+    background-color: transparent;
+}
+
+.select__list--item{
+    padding: 5px 0;
+}
+
+.select__list--item-link{
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.select__list--item-link:hover{
+    color: var(--primary-color);
+}
+
+/* pagination */
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination__item{
+
+}
+
+.pagination__item--active .pagination__item--link{
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.pagination__item--active .pagination__item--link:hover{
+    opacity: 0.9;
+}
+
+.pagination__item--link{
+    display: block;
+    text-decoration: none;
+    color: #939393;
+    font-size: 1.8rem;
+    min-width: 40px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: 400;
+    margin: 0 4px;
+}
+
+.pagination__item--link-icon{
+}
